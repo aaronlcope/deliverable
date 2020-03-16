@@ -22,7 +22,7 @@ jobs:
       - name: Run CI script
         run: ./scripts/ci.sh --skip-unit-tests --skip-sonar-cloud-analysis --sonar-cloud-auth-token ${{ secrets.SONAR_TOKEN }} --skip-nuget-packaging
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.package-token }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_REF: ${{ github.ref }}
           GITHUB_EVENT_PATH: ${ GITHUB_EVENT_PATH }
