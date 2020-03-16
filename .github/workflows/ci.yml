@@ -1,0 +1,31 @@
+name: ci
+
+on: 
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+    
+jobs:
+    
+    ci:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@master
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@master
+        with:
+          dotnet-version: 3.1.102
+
+      - name: Setup NuGet.exe for use with actions
+        uses: NuGet/setup-nuget@master
+
+      - name: Run CI script
+        run: ./scripts/ci.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REF: ${{ github.ref }}
+          GITHUB_EVENT_PATH: ${ GITHUB_EVENT_PATH }
