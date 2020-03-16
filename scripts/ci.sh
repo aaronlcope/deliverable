@@ -15,6 +15,7 @@
 #-  CONSTANTS
 #-----------------------------------------------------------------------------------------------------
 SONAR_URL="https://sonarcloud.io"
+NUGET_PUBLIC_FEED_URL="https://api.nuget.org/v3/index.json"
 
 #-----------------------------------------------------------------------------------------------------
 #-  VARIABLES (set later in setScriptEnvironmentVariables)
@@ -27,7 +28,6 @@ GITHUB_PULLREQUEST_BRANCH_REF=""
 GITHUB_BRANCH_NAME=""
 GITHUB_PULLREQUEST_NUMBER=""
 SONAR_CLOUD_AUTH_TOKEN=""
-NUGET_PUBLIC_FEED=""
 
 #---------------
 
@@ -95,8 +95,8 @@ function main {
 #-------------------------------------------------------
 function restoreDependencies {
     # restore dependencies of src and test.
-    dotnet restore ./src/*.csproj -s "https://nuget.pkg.github.com/$ORGANIZATION/index.json" -s https://api.nuget.org/v3/index.json
-    dotnet restore .test/*.csproj -s "https://nuget.pkg.github.com/$ORGANIZATION/index.json" -s https://api.nuget.org/v3/index.json
+    dotnet restore ./src/*.csproj -s "https://nuget.pkg.github.com/$ORGANIZATION/index.json" -s "$NUGET_PUBLIC_FEED_URL"
+    dotnet restore .test/*.csproj -s "https://nuget.pkg.github.com/$ORGANIZATION/index.json" -s "$NUGET_PUBLIC_FEED_URL"
 }
 #---------------
 
