@@ -34,9 +34,9 @@ jobs:
         dotnet publish -r linux-x64
         dotnet publish -r osx-x64
         zip -r win-x64.zip "$output_path/win-x64"
-        zip -r win-x64.zip "$output_path/linux-x64"
-        zip -r win-x64.zip "$output_path/osx-x64"
-
+        zip -r linux-x64.zip "$output_path/linux-x64"
+        zip -r osx-x64.zip "$output_path/osx-x64"
+        
       - name: Upload build artifact (windows)
         uses: actions/upload-artifact@master
         with:
