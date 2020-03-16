@@ -30,12 +30,12 @@ jobs:
       - name: Publish application for distribution.
         run: |
         local output_path="./bin/Release/netcoreapp3.1"
-        dotnet publish --framework netcoreapp3.1 --runtime win-x64
-        dotnet publish --framework netcoreapp3.1 --runtime linux-x64
-        dotnet publish --framework netcoreapp3.1 --runtime osx-x64
-        zip -r win-x64.zip '$output_path/win-x64'
-        zip -r win-x64.zip '$output_path/linux-x64'
-        zip -r win-x64.zip '$output_path/osx-x64'
+        dotnet publish -r win-x64
+        dotnet publish -r linux-x64
+        dotnet publish -r osx-x64
+        zip -r win-x64.zip "$output_path/win-x64"
+        zip -r win-x64.zip "$output_path/linux-x64"
+        zip -r win-x64.zip "$output_path/osx-x64"
 
       - name: Upload build artifact (windows)
         uses: actions/upload-artifact@master
