@@ -39,7 +39,7 @@ jobs:
            echo "$nuget_config" > ./src/NuGet.config
 
       - name: Run CI script
-        run: ./scripts/ci.sh --skip-unit-tests --skip-sonar-cloud-analysis --skip-nuget-packaging --sonar-cloud-auth-token ${{ secrets.SONAR_TOKEN }}
+        run: ./scripts/ci.sh --skip-unit-tests --skip-sonar-cloud-analysis --skip-nuget-packaging
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
