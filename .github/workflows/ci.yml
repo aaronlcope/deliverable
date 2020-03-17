@@ -64,17 +64,17 @@ jobs:
       - name: Upload build artifact (windows)
         uses: actions/upload-artifact@master
         with:
-            name: windows
+            name: windows-x64
             path: "./win-x64.zip"
 
       - name: Upload build artifact (linux)
         uses: actions/upload-artifact@master
         with:
-            name: linux
+            name: linux-x64
             path: "./linux-x64.zip"
 
       - name: Upload build artifact (osx)
         uses: actions/upload-artifact@master
         with:
-            name: osx
+            name: osx-x64
             path: "./osx-x64.zip"
