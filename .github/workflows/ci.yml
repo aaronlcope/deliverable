@@ -11,7 +11,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
       - uses: actions/checkout@master
-      
+
       - name: Setup .NET Core
         uses: actions/setup-dotnet@master
         with:
@@ -39,7 +39,7 @@ jobs:
            echo "$nuget_config" > ./src/NuGet.config
 
       - name: Run CI script
-        run: ./scripts/ci.sh --skip-unit-tests --skip-sonar-cloud-analysis --sonar-cloud-auth-token ${{ secrets.SONAR_TOKEN }} --skip-nuget-packaging
+        run: ./scripts/ci.sh --skip-unit-tests --skip-sonar-cloud-analysis --skip-nuget-packaging --sonar-cloud-auth-token ${{ secrets.SONAR_TOKEN }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}

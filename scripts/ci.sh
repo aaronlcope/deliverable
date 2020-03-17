@@ -82,10 +82,21 @@ done
 #-------------------------------------------------------
 function main {
     setScriptVariables
+    restoreDependencies
     buildSourceCode
     testSourceCode
     scanSourceCode
     packageCompiledSourceCode
+}
+#---------------
+
+#-------------------------------------------------------
+#- restores dependencies of the dotnet core projects
+#-------------------------------------------------------
+function restoreDependencies {
+    # restore dependencies of src and test.
+    dotnet restore ./src/*.csproj
+    dotnet restore .test/*.csproj
 }
 #---------------
 
