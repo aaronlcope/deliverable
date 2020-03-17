@@ -35,7 +35,7 @@ jobs:
                                     </github>
                                 </packageSourceCredentials>
                             </configuration>"
-           echo "$nuget_config" > NuGet.config
+           echo "$nuget_config" > ./src/NuGet.config
 
 
       - name: Run CI script
