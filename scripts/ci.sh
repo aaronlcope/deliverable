@@ -95,8 +95,8 @@ function main {
 #-------------------------------------------------------
 function restoreDependencies {
     # restore dependencies of src and test.
-    dotnet restore ./src/*.csproj -s "https://nuget.pkg.github.com/$ORGANIZATION/index.json" -s "$NUGET_PUBLIC_FEED_URL"
-    dotnet restore .test/*.csproj -s "https://nuget.pkg.github.com/$ORGANIZATION/index.json" -s "$NUGET_PUBLIC_FEED_URL"
+    dotnet restore ./src/*.csproj
+    dotnet restore .test/*.csproj
 }
 #---------------
 

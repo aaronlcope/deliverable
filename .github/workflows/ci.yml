@@ -19,10 +19,29 @@ jobs:
       - name: Setup NuGet.exe for use with actions
         uses: NuGet/setup-nuget@master
 
+      - name: Create nuget config file
+        run: |
+         local nuget_config="<?xml version="1.0" encoding="utf-8"?>
+                            <configuration>
+                                <packageSources>
+                                    <clear />
+                                    <add key="github" value="https://nuget.pkg.github.com/aaronlcope/index.json" />
+                                    <add key="github" value="https://api.nuget.org/v3/index.json" />
+                                </packageSources>
+                                <packageSourceCredentials>
+                                    <github>
+                                        <add key="Username" value="aaroncope@gmail.com" />
+                                        <add key="ClearTextPassword" value="${{ secrets.PACKAGE_TOKEN }}" />
+                                    </github>
+                                </packageSourceCredentials>
+                            </configuration>"
+           echo "$nuget_config" > NuGet.config
+
+
       - name: Run CI script
         run: ./scripts/ci.sh --skip-unit-tests --skip-sonar-cloud-analysis --sonar-cloud-auth-token ${{ secrets.SONAR_TOKEN }} --skip-nuget-packaging
         env:
-          GITHUB_TOKEN: ${{ secrets.PACKAGE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_REF: ${{ github.ref }}
           GITHUB_EVENT_PATH: ${ GITHUB_EVENT_PATH }
