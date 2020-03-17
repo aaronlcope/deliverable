@@ -21,7 +21,7 @@ jobs:
 
       - name: Create nuget config file
         run: |
-         nuget_config="<?xml version="1.0" encoding="utf-8"?>
+         nuget_config='<?xml version="1.0" encoding="utf-8"?>
                             <configuration>
                                 <packageSources>
                                     <clear />
@@ -34,7 +34,7 @@ jobs:
                                         <add key="ClearTextPassword" value="${{ secrets.PACKAGE_TOKEN }}" />
                                     </github>
                                 </packageSourceCredentials>
-                            </configuration>"
+                            </configuration>'
            echo "$nuget_config" > ./src/NuGet.config
 
 
