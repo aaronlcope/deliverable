@@ -49,29 +49,17 @@ jobs:
       - name: Publish application for distribution (windows).
         run: |
          dotnet publish ./src/*.csproj -c Release -r win-x64
-         pushd "$(pwd)/src/bin/Release/netcoreapp3.1/win-x64/publish"
-         zip -rj win-x64.zip ./
-         popd
-         pwd
-         ls -al
+         zip -rj win-x64.zip "$(pwd)/src/bin/Release/netcoreapp3.1/win-x64/publish"
          
       - name: Publish application for distribution (linux).
         run: |
          dotnet publish ./src/*.csproj -c Release -r linux-x64
-         pushd "$(pwd)/src/bin/Release/netcoreapp3.1/linux-x64/publish"
-         zip -rj linux-x64.zip ./
-         popd
-         pwd
-         ls -al
+         zip -rj linux-x64.zip "$(pwd)/src/bin/Release/netcoreapp3.1/linux-x64/publish"
 
       - name: Publish application for distribution (osx).
         run: |
          dotnet publish ./src/*.csproj -c Release -r osx-x64
-         pushd "$(pwd)/src/bin/Release/netcoreapp3.1/osx-x64/publish"
-         zip -rj osx-x64.zip ./
-         popd
-         pwd
-         ls -al
+         zip -rj osx-x64.zip "$(pwd)/src/bin/Release/netcoreapp3.1/osx-x64/publish"
 
       - name: Upload build artifact (windows)
         uses: actions/upload-artifact@master

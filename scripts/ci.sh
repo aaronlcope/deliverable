@@ -96,7 +96,9 @@ function main {
 function restoreDependencies {
     # restore dependencies of src and test.
     dotnet restore ./src/*.csproj
-    dotnet restore .test/*.csproj
+    if [ -z ${SKIP_UNIT_TESTS+x} ]; then
+        dotnet restore ./test/*.csproj
+    fi
 }
 #---------------
 
