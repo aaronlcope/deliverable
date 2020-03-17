@@ -21,7 +21,7 @@ jobs:
 
       - name: Create nuget config file
         run: |
-         local nuget_config="<?xml version="1.0" encoding="utf-8"?>
+         nuget_config="<?xml version="1.0" encoding="utf-8"?>
                             <configuration>
                                 <packageSources>
                                     <clear />
