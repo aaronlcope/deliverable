@@ -14,8 +14,9 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         OUTPUT_FOLDER: milestone-notes
         FILENAME_PREFIX: milestone
-    - name: Automatically push milestone notes to repository
-      run: |
-       git add .
-       git commit -m'Add milestone notes.'
-       git push
+
+    - name: Upload release notes (artifacts)
+        uses: actions/upload-artifact@master
+        with:
+            name: release notes
+            path: "./milestone-notes/milestone*"
