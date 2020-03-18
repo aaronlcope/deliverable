@@ -12,18 +12,18 @@ jobs:
     name: Create release with assets
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/download-artifacts@master
       - name: Download distributable (windows)
-        - uses: actions/download-artifacts@master
           with: 
             name: windows-x64
             path: ./assets 
+      - uses: actions/download-artifacts@master      
       - name: Download distributable (linux)
-        - uses: actions/download-artifacts@master
           with: 
             name: linux-x64
             path: ./assets
+      - uses: actions/download-artifacts@master
       - name: Download distributable (osx)
-        - uses: actions/download-artifacts@master
           with: 
             name: osx-x64
             path: ./assets 
