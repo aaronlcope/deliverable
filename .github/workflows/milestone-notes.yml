@@ -14,9 +14,3 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         OUTPUT_FOLDER: milestone-notes
         FILENAME_PREFIX: milestone
-
-    - name: Upload release notes (artifacts)
-      uses: actions/upload-artifact@master
-      with:
-        name: release notes
-        path: "./milestone-notes/milestone*"
