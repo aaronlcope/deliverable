@@ -16,7 +16,7 @@ jobs:
         FILENAME_PREFIX: milestone
 
     - name: Upload release notes (artifacts)
-        uses: actions/upload-artifact@master
-        with:
-            name: release notes
-            path: "./milestone-notes/milestone*"
+      uses: actions/upload-artifact@master
+      with:
+        name: release notes
+        path: "./milestone-notes/milestone*"
