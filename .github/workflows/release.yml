@@ -14,19 +14,21 @@ jobs:
     steps:
       - uses: actions/download-artifacts@master
       - name: Download distributable (windows)
-          with: 
-            name: windows-x64
-            path: ./assets 
+        with: 
+          name: windows-x64
+          path: ./assets
+
       - uses: actions/download-artifacts@master      
       - name: Download distributable (linux)
-          with: 
-            name: linux-x64
-            path: ./assets
+        with: 
+          name: linux-x64
+          path: ./assets
+
       - uses: actions/download-artifacts@master
       - name: Download distributable (osx)
-          with: 
-            name: osx-x64
-            path: ./assets 
+        with: 
+          name: osx-x64
+          path: ./assets
 
       - name: Ensure distributables are there
         run: |
