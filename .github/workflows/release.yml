@@ -48,7 +48,7 @@ jobs:
           body: cat < $(ls -v1 *\milestone_*.md | sort -nk1.11,1.99999 -r | head -n1)
 
       - name: Upload release asset (windows)
-        id: upload-release-asset 
+        id: upload-windows-release-asset 
         uses: actions/upload-release-asset@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -59,7 +59,7 @@ jobs:
           asset_content_type: application/zip
 
       - name: Upload release asset (linux)
-        id: upload-release-asset 
+        id: upload-linux-release-asset 
         uses: actions/upload-release-asset@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -70,7 +70,7 @@ jobs:
           asset_content_type: application/zip
 
       - name: Upload release asset (osx)
-        id: upload-release-asset 
+        id: upload-osx-release-asset 
         uses: actions/upload-release-asset@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
