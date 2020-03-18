@@ -11,6 +11,8 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@master
+      
       - name: Download distributable (windows)
         uses: actions/download-artifacts@master
         with: 
