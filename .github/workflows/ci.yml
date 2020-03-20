@@ -97,13 +97,16 @@ jobs:
          ls -al
 
       - name: Install npm.
-        uses: bahmutov/npm-install@master
+        uses: actions/setup-node@master
+        #if: startsWith(github.ref, 'refs/tags/')
         with:
-          useLockFile: false
+          node-version: '13.x'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Create Release Notes
         #if: startsWith(github.ref, 'refs/tags/')
         run : |
+         npm install github-release-notes -g
          export GREN_GITHUB_TOKEN=${{ secrets.GREN }}
          gren changelog --generate
          ls -al
