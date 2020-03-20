@@ -47,19 +47,19 @@ jobs:
          zip -rj osx-x64.zip "$(pwd)/src/bin/Release/netcoreapp3.1/osx-x64/publish"
 
       - name: Upload build artifact (windows)
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@master
         with:
             name: windows-x64
             path: "./win-x64.zip"
 
       - name: Upload build artifact (linux)
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@master
         with:
             name: linux-x64
             path: "./linux-x64.zip"
 
       - name: Upload build artifact (osx)
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@master
         with:
             name: osx-x64
             path: "./osx-x64.zip"
@@ -69,19 +69,19 @@ jobs:
       runs-on: ubuntu-latest
       steps:
       - uses: actions/checkout@master
-      
+
       - name: Download distributable (windows)
-        uses: actions/download-artifacts@v1
+        uses: actions/download-artifact@master
         with: 
           name: windows-x64
     
       - name: Download distributable (linux)
-        uses: actions/download-artifacts@v1
+        uses: actions/download-artifact@master
         with: 
           name: linux-x64
 
       - name: Download distributable (osx)
-        uses: actions/download-artifacts@v1
+        uses: actions/download-artifact@master
         with: 
           name: osx-x64
 
