@@ -99,10 +99,10 @@ jobs:
       - name: Create Release Notes
         #if: startsWith(github.ref, 'refs/tags/')
         run : |
-        npm install github-release-notes -g
-        export GREN_GITHUB_TOKEN=${{ secrets.GREN }}
-        gren changelog --generate
-        ls -al
+         npm install github-release-notes -g
+         export GREN_GITHUB_TOKEN=${{ secrets.GREN }}
+         gren changelog --generate
+         ls -al
 
       - name: Create release
         if: startsWith(github.ref, 'refs/tags/')
