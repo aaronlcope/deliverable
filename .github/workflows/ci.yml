@@ -113,8 +113,8 @@ jobs:
           prerelease: false
           body_path: ./CHANGELOG.md
           files: |
-          ./windows-x64.zip
-          ./linux-x64.zip
-          ./osx-x64.zip
+           ./windows-x64.zip
+           ./linux-x64.zip
+           ./osx-x64.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
