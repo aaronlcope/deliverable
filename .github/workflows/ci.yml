@@ -74,21 +74,21 @@ jobs:
         uses: actions/download-artifacts@master
         with: 
           name: windows-x64
-          path: ./assets
+          path: "./win-x64.zip"
     
       - name: Download distributable (linux)
         if: startsWith(github.ref, 'refs/tags/')
         uses: actions/download-artifacts@master
         with: 
           name: linux-x64
-          path: ./assets
+          path: "./linux-x64.zip"
 
       - name: Download distributable (osx)
         if: startsWith(github.ref, 'refs/tags/')
         uses: actions/download-artifacts@master
         with: 
           name: osx-x64
-          path: ./assets
+          path: "./osx-x64.zip"
 
       - name: Ensure distributables are there
         if: startsWith(github.ref, 'refs/tags/')
@@ -97,50 +97,50 @@ jobs:
          pwd
          ls -al
 
-      - name: Create release
-        if: startsWith(github.ref, 'refs/tags/')
-        id: create_release
-        uses: actions/create-release@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
+      # - name: Create release
+      #   if: startsWith(github.ref, 'refs/tags/')
+      #   id: create_release
+      #   uses: actions/create-release@master
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     tag_name: ${{ github.ref }}
+      #     release_name: Release ${{ github.ref }}
+      #     draft: false
+      #     prerelease: false
 
-      - name: Upload release asset (windows)
-        if: startsWith(github.ref, 'refs/tags/')
-        id: upload-windows-release-asset 
-        uses: actions/upload-release-asset@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ./assets/
-          asset_name: windows-x64.zip
-          asset_content_type: application/zip
+      # - name: Upload release asset (windows)
+      #   if: startsWith(github.ref, 'refs/tags/')
+      #   id: upload-windows-release-asset 
+      #   uses: actions/upload-release-asset@master
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+      #     asset_path: ./assets/
+      #     asset_name: windows-x64.zip
+      #     asset_content_type: application/zip
 
-      - name: Upload release asset (linux)
-        if: startsWith(github.ref, 'refs/tags/')
-        id: upload-linux-release-asset 
-        uses: actions/upload-release-asset@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ./assets/
-          asset_name: linux-x64.zip
-          asset_content_type: application/zip
+      # - name: Upload release asset (linux)
+      #   if: startsWith(github.ref, 'refs/tags/')
+      #   id: upload-linux-release-asset 
+      #   uses: actions/upload-release-asset@master
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+      #     asset_path: ./assets/
+      #     asset_name: linux-x64.zip
+      #     asset_content_type: application/zip
 
-      - name: Upload release asset (osx)
-        if: startsWith(github.ref, 'refs/tags/')
-        id: upload-osx-release-asset 
-        uses: actions/upload-release-asset@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ./assets/
-          asset_name: osx-x64.zip
-          asset_content_type: application/zip
+      # - name: Upload release asset (osx)
+      #   if: startsWith(github.ref, 'refs/tags/')
+      #   id: upload-osx-release-asset 
+      #   uses: actions/upload-release-asset@master
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+      #     asset_path: ./assets/
+      #     asset_name: osx-x64.zip
+      #     asset_content_type: application/zip
