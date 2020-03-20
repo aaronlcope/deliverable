@@ -111,6 +111,7 @@ jobs:
          export GREN_GITHUB_TOKEN=${{ secrets.GREN }}
          gren changelog --generate --override
          ls -al
+         cat CHANGELOG.md
 
       - name: Create release
         if: startsWith(github.ref, 'refs/tags/')
