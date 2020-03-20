@@ -68,7 +68,6 @@ jobs:
       needs: ci
       runs-on: ubuntu-latest
       steps:
-      - uses: actions/checkout@master
 
       - name: Download distributable (windows)
         uses: actions/download-artifact@master
@@ -86,8 +85,7 @@ jobs:
           name: osx-x64
 
       - name: Ensure distributables are there
-        run: |
-         cd assets
+        run: |         
          pwd
          ls -al
 
