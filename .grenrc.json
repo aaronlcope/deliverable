@@ -1,7 +1,6 @@
 {
-    "dataSource": "milestones",
+    "dataSource": "commits",
     "prefix": "",
-    "groupBy": "label",
-    "milestoneMatch": "Release {{tag_name}}",
+    "includeMessages": "all",
     "changelogFilename": "CHANGELOG.md"
 }
