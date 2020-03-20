@@ -72,41 +72,41 @@ jobs:
 
       - name: Download distributable (windows)
         uses: actions/download-artifact@master
-        #if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/')
         with: 
           name: windows-x64
           path: "./win-x64.zip"
     
       - name: Download distributable (linux)
         uses: actions/download-artifact@master
-        #if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/')
         with: 
           name: linux-x64
           path: "./linux-x64.zip"
 
       - name: Download distributable (osx)
         uses: actions/download-artifact@master
-        #if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/')
         with: 
           name: osx-x64
           path: "./osx-x64.zip"
 
       - name: Install npm.
         uses: actions/setup-node@master
-        #if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/')
         with:
           node-version: '13.x'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Create Release Notes
-        #if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/')
         run : |
          npm install github-release-notes -g
          export GREN_GITHUB_TOKEN=${{ secrets.GREN }}
          gren changelog --generate --override
 
       - name: Create release
-        #if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/')
         id: create_release
         uses: actions/create-release@master
         env:
@@ -119,7 +119,7 @@ jobs:
           body: ${{ cat CHANGELOG.md }}
 
       - name: Upload release asset (windows)
-        #if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/')
         id: upload-windows-release-asset 
         uses: actions/upload-release-asset@master
         env:
@@ -131,7 +131,7 @@ jobs:
           asset_content_type: application/zip
 
       - name: Upload release asset (linux)
-        #if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/')
         id: upload-linux-release-asset 
         uses: actions/upload-release-asset@master
         env:
@@ -143,7 +143,7 @@ jobs:
           asset_content_type: application/zip
 
       - name: Upload release asset (osx)
-        #if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/')
         id: upload-osx-release-asset 
         uses: actions/upload-release-asset@master
         env:
