@@ -116,7 +116,7 @@ jobs:
           prerelease: false
           body_path: CHANGELOG.md
           files: |
-           windows-x64.zip
+           win-x64.zip
            linux-x64.zip
            osx-x64.zip
         env:
