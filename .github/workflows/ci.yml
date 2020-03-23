@@ -107,6 +107,7 @@ jobs:
          export GREN_GITHUB_TOKEN=${{ secrets.GREN }}
          gren changelog --generate
          ls -al
+         pwd
 
       - name: Create release with assets
         uses: softprops/action-gh-release@master
@@ -115,9 +116,9 @@ jobs:
           draft: false
           prerelease: false
           body_path: CHANGELOG.md
-          files: |
-           ./win-x64.zip
-           ./linux-x64.zip
-           ./osx-x64.zip
+          files: | 
+            win-x64.zip
+            linux-x64.zip
+            osx-x64.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
