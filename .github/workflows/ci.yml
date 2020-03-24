@@ -71,6 +71,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
       - uses: actions/checkout@master
+        if: startsWith(github.ref, 'refs/tags/')
 
       - name: Download distributable (windows)
         uses: actions/download-artifact@master
